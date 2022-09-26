@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Happiness and Alcohol Consumption of Population in 2016",
+  "title": "Alcohol Consumption of Population in 2016",
   "width": 800,
   "height": 400,
   "data": {
