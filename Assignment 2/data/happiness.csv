@@ -1,4 +1,4 @@
-,Country,Happiness Score,GDP per capita,Healthy life expectancy,Freedom to make life choices,Generosity,Perceptions of corruption,Year
+,Country,HappinessScore,GDP per capita,Healthy life expectancy,Freedom to make life choices,Generosity,Perceptions of corruption,Year
 0,Finland,7.842,1.446,0.741,0.691,0.124,0.481,2021
 1,Denmark,7.62,1.502,0.763,0.686,0.208,0.485,2021
 2,Switzerland,7.571,1.566,0.816,0.653,0.204,0.413,2021
