@@ -25,7 +25,7 @@
             "y": {
               "field": "Happiness_Score",
               "type": "quantitative",
-              "title": "Happiness Score",
+              "title": "Happiness Score"
             },
             "x": {
               "field": "Country",
