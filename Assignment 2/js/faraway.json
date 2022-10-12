@@ -26,6 +26,7 @@
               "field": "Happiness_Score",
               "type": "quantitative",
               "title": "Happiness Score"
+              "axis": {"tickCount": 5, "grid": false},
             },
             "x": {
               "field": "Country",
