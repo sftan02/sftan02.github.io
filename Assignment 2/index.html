@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>World Happiness</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- JS file-->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script src="js/vegalite.js"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin:100px" >
+
+    <div>
+        <h1 class="w3-text-teal">Happiness Level Around the World</h1>
+        <p1>
+            Happiness Level of the population are important in any countries in the world as they can be a very good parameter to estimate the 
+            well-being of the population in a country. The Happiness Score used in this visualisation is estimated by using several values of a country as estimators and factors
+            for the well-being of the population. The estimators are as follows: GDP per capita, Healthy Life Expectancy, Social support, Freedom to make life choices, 
+            Generosity and Corruption Perception.
+        </p1>
+    </div>
+
+
+    <div class="w3-row w3-padding-64">
+    <div class="w3-auto w3-container">
+        <div id="vis1" class="vis-container" style="display: block;"></div>
+    </div>
+    </div>
+
+    <div class="w3-row">
+    <div class="w3-half w3-container">
+        <h1 class="w3-text-teal">Countries with highest happiness scores</h1>
+        <p>
+            With that, the best countries with the highest happiness scores are shown in the bar chart on the right. Those with a higher rankings in happiness score are more
+            possible to be a more advance country, hence are more possible to provide a better quality of life to its population. For example, the countries such as
+            Sweden, Norway and Finland, which are shown on the bar chart, are located close to each other on the world map, while having high happiness scores. This can 
+            be lead by similar values shared on the region or the population.
+        </p>
+    </div>
+    <div class="w3-half w3-container">
+        <div id="vis2" class="vis-container" style="display: block;"></div>
+    </div>
+    </div>
+
+    <div class="w3-row">
+        <div class="w3-half w3-container">
+            <div id="vis3" class="vis-container" style="display: block;"></div>
+        </div>
+        <div class="w3-half w3-container">
+            <h1 class="w3-text-teal">Countries faraway from each others</h1>
+            <p>
+                These are the countries that are located at different places on the world map. The happiness varies accordingly, especially higher on most of the Western Regions.
+                The results can be seen on the bar chart at the side.
+            </p>
+        </div>
+        </div>
+
+ 
+
+<!-- END MAIN -->
+</div>
+<!-- Pagination -->
+<div>
+    <footer id="myFooter">
+        <div class="w3-container w3-theme-l2 w3-padding-32">
+            <!-- <h4>Footer</h4> -->
+        </div>
+        
+        <div class="w3-container w3-theme-l1">
+            <p>Made by: Tan Seng Fan></p>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
+
+</html>

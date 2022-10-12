@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "autosize": {"resize": true},
+  "data": {
+    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
+  "params": [
+    {
+      "name": "year_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+        "labels": [
+          "All",
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021"
+        ],
+        "name": "Year: "
+      }
+    }
+  ],
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "width": 800,
+          "height": 400,
+          "title": "Top Countries with the highest Happiness Score",
+          "data": {
+            "url": "https://raw.githubusercontent.com/sftan02/sftan02.github.io/main/Assignment%202/data/Country_happiness_dataset.csv"
+          },
+          "transform": [
+            {
+              "window": [{"op": "rank", "as": "rank"}],
+              "sort": [{"field": "Happiness_Score", "order": "descending"}]
+            },
+            {"filter": "datum.rank <= 10"},
+            {"filter": "datum.Year == year_selection || year_selection == null"}
+          ],
+          "mark": "bar",
+          "encoding": {
+            "x": {
+              "field": "Happiness_Score",
+              "type": "quantitative",
+              "title": "Happiness Score"
+            },
+            "y": {
+              "field": "Country",
+              "type": "nominal",
+              "sort": {
+                "field": "Happiness_Score",
+                "op": "average",
+                "order": "descending"
+              },
+              "title": "Country"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "title": {"font": "sans-serif", "fontSize": 16},
+    "axis": {"labelFont": "sans-serif"},
+    "text": {"font": "sans-serif", "fontSize": 13, "fontWeight": "bold"}
+  }
+}
