@@ -1,0 +1,203 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "autosize": {"resize": true},
+  "data": {
+    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
+  "params": [
+    {
+      "name": "year_selection",
+      "value": 2021,
+      "bind": {
+        "input": "range",
+        "min": 2015,
+        "max": 2021,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "width": 500,
+          "height": 400,
+          "title": "TOP COUNTRIES WITH THE HIGHEST HAPPINESS LEVEL",
+          "data": {
+            "url": "https://raw.githubusercontent.com/sftan02/sftan02.github.io/main/Assignment%202/data/Country_happiness_dataset_cleaned.csv"
+          },
+          "transform": [
+            {
+              "window": [{"op": "rank", "as": "rank"}],
+              "sort": [{"field": "Happiness_Score", "order": "descending"}]
+            },
+            {"filter": "toString(datum.Year) == year_selection"},
+            {"filter": "datum.Happiness_Rank <= 5"}
+          ],
+          "mark": "bar",
+          "encoding": {
+            "y": {
+              "field": "Happiness_Score",
+              "type": "quantitative",
+              "title": "Happiness Score",
+              "aggregate": "max",
+              "axis": {"tickCount": 5, "grid": false, "labelFont": "Verdana"},
+              "scale":{
+                "domain": [7, 8],
+                "scheme": "oranges"
+              }
+            },
+            "color": {
+              "field":"Happiness_Score",
+              "type": "quantitative",
+              "aggregate":"max",
+              "scale": {"domain": [0, 10], "scheme": "darkred"}
+            },
+            "x": {
+              "field": "Country",
+              "type": "nominal",
+              "sort": {
+                "field": "Happiness_Score",
+                "order": "descending"
+              },
+              "axis": {"tickCount": 5, "grid": false, "labelAngle": 0},
+              "title": "Country"
+            },
+            "tooltip":[
+              {"field": "Country", "type": "nominal", "title": "Country"},
+              {"field": "Happiness_Score", "type": "quantitative", "title": "Happiness Score", "format": ".2f"},
+            ]
+          }
+        },
+        {
+          "width": 500,
+          "height": 400,
+          "title": "LIFE EXPECTANCY OVER ECOCNOMY",
+          "data": {
+            "url": "https://raw.githubusercontent.com/sftan02/sftan02.github.io/main/Assignment%202/data/Country_happiness_dataset_cleaned.csv"
+          },
+          "transform": [
+            {"filter": "toString(datum.Year) == year_selection"},
+          ],
+          "encoding": {
+            "x":{
+              "field": "GDP_per_capita",
+              "type": "quantitative",
+              "title": "Economy (GDP per capita)"
+            },
+            "y":{
+              "field": "Healthy_life_expectancy",
+              "type": "quantitative",
+              "title": "Healthy Life Expectancy"
+            }
+          },
+          "layer": [
+            {
+              "mark": "circle",
+              "encoding": {
+                "size":{
+                  "type": "quantitative",
+                  "field": "Freedom_to_make_life_choices",
+                  "scale":{
+                    "domain": [0, 0.2, 0.4, 0.6, 0.8, 1],
+                    "range": [10, 50, 150, 300, 500]
+                  },
+                  "legend": {"title": "Freedom to make life choices", "titleAlign":"center", "titleAnchor":"middle", "symbolFillColor": "orange", "symbolStrokeColor": "orange"}
+                },
+                "color":{
+                  "field": "Happiness_Score",
+                  "type": "quantitative",
+                  "scale": {"domain": [0, 10], "scheme": "darkred"},
+                  "legend":{
+                    "title": "Happiness Level",
+                    "titleAlign":"center",
+                    "titleAnchor":"middle"
+                  }
+                },
+                "tooltip":[
+                  {"field": "Country", "type": "nominal", "title":"Country"},
+                  {"field": "Happiness_Score", "type": "quantitative", "title":"Happiness Score", "format": ".2f"},
+                  {"field": "Freedom_to_make_life_choices", "type": "quantitative", "title":"Freedom", "format": ".2f"},
+                  {"field": "Healthy_life_expectancy", "type": "quantitative", "title":"Life expectancy", "format": ".2f"},
+                  {"field": "GDP_per_capita", "type": "quantitative", "title":"GDP per capita", "format": ".2f"},
+                ]
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align":"right",
+                "baseline":"middle",
+                "fontStyle": "italic"
+              },
+              "transform": [
+                {
+                  "window": [{"op":"rank", "as": "ranking"}],
+                  "sort": [{"field": "Happiness_Score", "order":"descending"}]
+                },
+                {"filter":"datum.ranking == 1"},
+                {
+                  "calculate": "datum['Country']", "as": "text_annotation_raw"
+                },
+                {
+                  "calculate": "split(datum.text_annotation_raw, ';')", "as": "text_annotation"
+                }
+              ],
+              "encoding": {
+                "text": {"field":"text_annotation"},
+              }
+            },
+            {
+              "mark":{
+                "type":"rule",
+                "strokeDash": [2, 3],
+                "size": 2,
+                "color": "blue"
+              },
+              "encoding": {
+                "x":{
+                  "aggregate":"mean", "field": "GDP_per_capita"
+                },
+                "y":{
+                  "aggregate":"max", "field": "Healthy_life_expectancy"
+                }
+              }
+            },
+            {
+              "mark":{
+                "type":"text",
+                "dy": 30,
+                "dx": -100,
+                "fontStyle": "italic",
+                "color":"blue"
+              },
+              "encoding": {
+                "x":{
+                  "aggregate":"mean", "field": "GDP_per_capita"
+                },
+                "y":{
+                  "aggregate":"max", "field": "Healthy_life_expectancy"
+                },
+                "text":{
+                  "value": "Average GDP per capita"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {
+    "title": {"font": "Verdana", "fontSize": 20, "fontWeight": "bold"},
+    "axis": {
+      "titleFont": "Verdana",
+      "labelFont": "Verdana",
+      "labelFontSize": 11,
+      "titleFontSize": 13
+    },
+    "text": {"font": "Verdana", "fontSize": 13, "fontWeight": "bold"}
+  }
+}
