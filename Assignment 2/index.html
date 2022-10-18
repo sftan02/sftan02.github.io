@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>World Happiness</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- JS file-->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script src="js/vegalite.js"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="background-color: blanchedalmond; margin-left: 100px; margin-right: 100px;">
+
+    <div>
+        <div class="w3-text-teal" style="font-family: Georgia, serif;font-size: 50px; padding-top: 1%; padding-left: 30px; padding-right: 30px;">HAPPINESS LEVEL AROUND THE WORLD</div>
+        <div style="padding-left: 30px; padding-right: 30px; font-size: 20px"> To measure the well-being of population around the world (2015-2021)</div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-left: 30px; margin-right: 30px;">
+        <p style="font-family: Verdana, sans-serif; padding-left: 30px; padding-right: 30px;">
+            Happiness Level of the population are important in any countries in the world as they can be a very good parameter to estimate the 
+            <strong> well-being</strong> of the population in a country. The Happiness Score used in this visualisation is estimated by using several factors that represent
+            the well-being of the population in a country as estimators. 
+            The estimators are as follows: <strong>GDP per capita, Healthy Life Expectancy, Social support, Freedom to make life choices, Generosity and Corruption Perception.</strong> 
+        </p>
+    </div>
+    
+
+    <h1 class="w3-text-teal" style="font-family: Georgia, serif;padding-top: 1%; padding-left: 30px;padding-right: 30px;">INTERACTIVE WORLD MAP TO VISUALISE THE DATA </h1>
+    <p style=" padding-left: 30px;padding-right: 30px;">
+        From the world map showing the Happiness Level over the world, it can be seen that countries from <strong>Central Africa and Asia </strong> had the lowest overall happiness level, with a 
+        <mark style="background-color:blanchedalmond;color: rgb(194, 0, 0); font-weight: bold;"> darker colour scheme </mark> around the regions, 
+        and it continued to decrease as year increases. On the other hand, countries on the <strong>Northern Europe, North America and Australia  </strong>
+        had been showing high happiness level throughout the years, with a <mark style="background-color:blanchedalmond;color: orange; font-weight: bold;">brighter colour scheme</mark> around the regions.
+    </p>
+    <div class="w3-auto w3-container">
+        <div id="vis1" class="vis-container" style="display: block;padding-left: 100px;padding-right: 30px;"></div>
+    </div>
+
+    <h1 class="w3-text-teal" style="font-family: Georgia, serif;padding-top: 1%; padding-left: 30px;padding-right: 30px;">COMPARISON BETWEEN COUNTRIES</h1>
+    <p style=" padding-left: 30px; padding-right: 30px;">
+        With that, the best countries with the highest happiness scores are shown in the bar chart on the below. Countries with 
+        <mark style="background-color:blanchedalmond;color: orange; font-weight: bold;">higher rankings in happiness score</mark>  are more
+        possible to be <strong> advanced countries</strong>, hence the population will have better well-being. This can be observed on the scatterplot on the side,
+        which the country with the highest happiness level is always on the far right, with high GDP per capita and high life expectancy.
+        Besides that, countries having <mark style="background-color:blanchedalmond;color: orange; font-weight: bold;">high happiness scores</mark>  such as
+        <strong>Switzerland, Norway and Finland </strong> are located close to each other on the world map. From that, it is possible to speculate that
+        <strong>geographical location</strong> might also have an effect on happiness level.
+    </p>
+
+    <div class="w3-half w3-container">
+        <div id="vis2" class="vis-container" style="display: block;padding-left: 30%;padding-right: 30%;"></div>
+    </div>
+    
+    <h1 class="w3-text-teal" style="font-family: Georgia, serif;padding-top: 30%; padding-left: 30px;padding-right: 30px;">COMPARISON BETWEEN DIFFERENT YEARS</h1>
+    <p style=" padding-left: 30px; padding-right: 30px;">
+        <mark style="background-color:blanchedalmond;color: rgb(71, 71, 226); font-weight: bold;">Year 2019</mark> and 
+        <mark style="background-color:blanchedalmond;color: rgb(196, 132, 15); font-weight: bold;">Year 2021</mark> are chosen to compare the difference between the factors that are used to determine the well-being of the population. From the chart below,
+        it is possible to observe that the rising of happiness level is caused by the increment of  <mark style="background-color:blanchedalmond;color: orange; font-weight: bold;">
+            GDP per capita </mark> and the <mark style="background-color:blanchedalmond;color: orange; font-weight: bold;"> Freedom to make life choices</mark>  of the population.
+        However, there is a vast drop in the <mark style="background-color:blanchedalmond;color: rgb(194, 0, 0); font-weight: bold;">Healthy life expectancy</mark>, which can be caused by the pandemic that were still on-going during the year.
+    </p>
+    <div class="w3-row">
+        <div class="w3-half w3-container">
+            <div id="vis3" class="vis-container" style="display: block;padding-left: 50%;padding-right: 50%; padding-top: 1%; padding-bottom: 2%;"></div>
+        </div>
+        <div class="w3-half w3-container">
+            
+        </div>
+        </div>
+
+ 
+
+<!-- END MAIN -->
+</div>
+<!-- Pagination -->
+<div>
+    <footer id="myFooter">
+        <div class="w3-container w3-theme-l2 w3-padding-32">
+            <!-- <h4>Footer</h4> -->
+        </div>
+        
+        <div class="w3-container w3-theme-l1">
+            <p>Made by: Tan Seng Fan (31110142)</p>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
+
+</html>
