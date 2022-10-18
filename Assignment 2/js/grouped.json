@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "hconcat": [
+    {
+      "title": "COMPARISON OF FACTORS AFFECTING HAPPINESS LEVEL",
+      "data": {
+        "url": "https://raw.githubusercontent.com/sftan02/sftan02.github.io/main/Assignment%202/data/output_wide_new.csv"
+      },
+      "height": 450,
+      "width": 800,
+      "repeat": {"layer": ["2021", "2019"]},
+      "spec": {
+        "mark": {
+          "type": "bar",
+          "cornerRadiusTopLeft": 3,
+          "cornerRadiusTopRight": 3
+        },
+        "encoding": {
+          "x": {
+            "field": "Type",
+            "type": "nominal",
+            "title": "Factors of Happiness Level",
+            "axis": {"labelAngle": 0}
+          },
+          "y": {
+            "aggregate": "mean",
+            "field": {"repeat": "layer"},
+            "type": "quantitative",
+            "title": "Mean",
+            "axis": {"labelAngle": 0}
+          },
+          "color": {
+            "datum": {"repeat": "layer"},
+            "title": "Years",
+            "legend": {"titleAlign": "center", "titleAnchor": "middle"}
+          },
+          "xOffset": {"datum": {"repeat": "layer"}},
+          "tooltip": [
+            {
+              "aggregate": "mean",
+              "field": {"repeat": "layer"},
+              "format": ".3f",
+              "title": "Mean Value"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "config": {
+    "mark": {"invalid": null},
+    "title": {"font": "Verdana", "fontSize": 20, "fontWeight": "bold"},
+    "axis": {
+      "titleFont": "Verdana",
+      "labelFont": "Verdana",
+      "labelFontSize": 11,
+      "titleFontSize": 13
+    },
+    "text": {"font": "Verdana", "fontSize": 13, "fontWeight": "bold"},
+    "background": "blanchedalmond"
+  }
+}
